@@ -23,7 +23,6 @@ module.exports = {
         videoSource.setAttribute('type', 'video/mp4')
         mediaElement.appendChild(videoSource)
         aMedia.appendChild(mediaElement)
-        console.log(mediaElement)
       }
       article.appendChild(aMedia)
       const divLegend = document.createElement('div')

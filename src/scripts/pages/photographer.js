@@ -40,5 +40,22 @@ const displayMedias = async () => {
     mediasSection.appendChild(mediaCardDOM)
   })
 }
+document.querySelector('.contact_button').addEventListener('click', () => displayModal())
+document.querySelector('.close-btn').addEventListener('click', () => closeModal())
 
-if (window.location.pathname.endsWith('photographer.html')) displayPhotographer(loadPhotographer())
+const displayModal = async () => {
+  console.log('Clic button open modal')
+  const photographe = await loadPhotographer()
+  document.querySelector('div.modal header h2').innerHTML = 'Contactez-moi<br>' + photographe.name
+  document.querySelector('#contact_modal').style.display = 'block'
+}
+
+const closeModal = () => {
+  console.log('Clic button close modal')
+  document.querySelector('#contact_modal').style.display = 'none'
+}
+
+if (window.location.pathname.endsWith('photographer.html')) {
+  const photographe = loadPhotographer()
+  displayPhotographer(photographe)
+}
