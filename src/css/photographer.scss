@@ -48,6 +48,8 @@
         background-color: #DB8876;
         font-size: 24px;
         font-weight: 500;
+        font-style: normal;
+        line-height: 31px;
         padding:13px 20px;
         border-radius: 5px 5px 0 0;
     }
@@ -123,16 +125,17 @@ form input {
 }
 
 .medias-section{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(350px, 3fr));
+    grid-gap: 0 50px;
     margin: 20px 100px;
 
     article{
+        justify-self: center;
         display:flex;
         flex-direction: column;
-        width:30%;
-        height:350px;
+        width:350px;
+        height:auto;
         margin : 10px 0;
         // object-fit:none;
         div {
@@ -144,17 +147,18 @@ form input {
                 font-weight: 400;
                 color: #901C1C;
                 margin :5px;
+                .bigger-font-weight{
+                    font-weight: 500;
+                }
             }
         }
 
-        img{
+        img, video{
             width:100%;
-            height:90%;
-            z-index:-1;
-            
-            object-fit: cover;
+            height:300px;
+            object-fit:cover;
             border-radius: 5px;
-            
         }
+        
     }
 }

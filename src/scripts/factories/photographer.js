@@ -57,7 +57,7 @@ module.exports = {
         pLocalization.classList.add('p-localization')
         const pPrice = document.createElement('div')
         pPrice.classList.add('sticky-note')
-        pPrice.textContent = price + '€/jour'
+        pPrice.textContent = price + '€ / jour'
         divIdentity.classList.add('div-identity')
         divIdentity.appendChild(h1)
         divIdentity.appendChild(pLocalization)
