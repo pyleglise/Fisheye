@@ -16,7 +16,6 @@ module.exports = {
       img.classList.add('picture-identity')
       img.setAttribute('src', picture)
       img.setAttribute('alt', 'Photo de profil de ' + name)
-      img.setAttribute('aria-label', 'Photo de profil de ' + name)
       const pTagline = document.createElement('p')
       pTagline.textContent = tagline
       const spanTagline = document.createElement('span')
@@ -50,10 +49,8 @@ module.exports = {
         const divIdentity = document.createElement('div')
         const h1 = document.createElement('h1')
         h1.textContent = name
-        h1.setAttribute('aria-label', 'Identité : ' + name)
         const pLocalization = document.createElement('p')
         pLocalization.textContent = city + ', ' + country
-        pLocalization.setAttribute('aria-label', 'Localisation : ' + city + ', ' + country)
         pLocalization.classList.add('p-localization')
         const pPrice = document.createElement('div')
         pPrice.classList.add('sticky-note')

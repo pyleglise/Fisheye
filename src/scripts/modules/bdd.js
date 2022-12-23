@@ -42,5 +42,4 @@ const bdd = module.exports = {
     const mediasByPhotographerId = data.media.filter(element => element.photographerId === Number(_id))
     return mediasByPhotographerId
   }
-
 }

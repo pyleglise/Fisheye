@@ -12,26 +12,30 @@ module.exports = {
       const article = document.createElement('article')
       const aMedia = document.createElement('a')
       aMedia.setAttribute('href', mediaFile)
+      aMedia.setAttribute('title', "Cliquer pour agrandir l'image " + title)
       if (!isVideo) {
         const mediaElement = document.createElement('img')
         mediaElement.setAttribute('src', mediaFile)
+        mediaElement.setAttribute('alt', title)
         aMedia.appendChild(mediaElement)
       } else {
         const mediaElement = document.createElement('video')
         const videoSource = document.createElement('source')
         videoSource.setAttribute('src', mediaFile)
         videoSource.setAttribute('type', 'video/mp4')
+        videoSource.setAttribute('alt', title)
         mediaElement.appendChild(videoSource)
         aMedia.appendChild(mediaElement)
       }
       article.appendChild(aMedia)
       const divLegend = document.createElement('div')
       const pTitle = document.createElement('p')
+      pTitle.setAttribute('role', 'heading')
+      pTitle.setAttribute('aria-level', '2')
       pTitle.textContent = title
       const pLikes = document.createElement('p')
       pLikes.classList.add('bigger-font-weight')
       pLikes.innerHTML = likes + ' <i class="fa-solid fa-heart"></i>'
-
       article.appendChild(divLegend)
       divLegend.appendChild(pTitle)
       divLegend.appendChild(pLikes)
