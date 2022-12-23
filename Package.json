@@ -1,6 +1,6 @@
 {
   "name": "dev-js-p6-webpack5",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "description": "Developpeur d'application JS React Projet 6",
   "main": "./src/app.js",
   "scripts": {
