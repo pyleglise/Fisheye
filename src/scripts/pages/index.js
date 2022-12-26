@@ -8,6 +8,7 @@ const displayData = async photographers => {
   photographers.forEach((photographer) => {
     const photographerModel = factoryPhotographer.create(photographer)
     const userCardDOM = photographerModel.getUserCardDOM(page)
+    console.log(userCardDOM)
     photographersSection.appendChild(userCardDOM)
     // index++
   })
@@ -18,4 +19,5 @@ const init = async () => {
   displayData(photographers)
 }
 
-if (window.location.pathname.endsWith('index.html')) init()
+// if (window.location.pathname.endsWith('index.html'))
+init()
