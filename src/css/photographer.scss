@@ -1,6 +1,4 @@
-#contact_modal {
-    display: none;
-}
+
 
 .photograph-header {
     display: flex;
@@ -48,6 +46,8 @@
         background-color: #DB8876;
         font-size: 24px;
         font-weight: 500;
+        font-style: normal;
+        line-height: 31px;
         padding:13px 20px;
         border-radius: 5px 5px 0 0;
     }
@@ -68,21 +68,41 @@
     cursor: pointer;
 }
 
+
+#contact_modal {
+    display: none;
+    position: fixed;
+    z-index: 11;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    // overflow:hidden;
+    background-color: #FAFAFA;
+
+}
+
 .modal {
+    position:relative;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    margin: 0 -30%;
+    left: 60%;
+    top: 80px; 
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height:auto;
+    margin:auto;
+    
 }
 
 .modal header img {
@@ -92,7 +112,8 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
+    margin:0;
 }
 
 form {
@@ -120,19 +141,28 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 36px;
+}
+form textarea {
+    width: 100%;
+    font-size: 36px;
+    height: 4em;
+    border: none;
+    border-radius: 5px;
 }
 
 .medias-section{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(350px, 3fr));
+    grid-gap: 0 50px;
     margin: 20px 100px;
 
     article{
+        justify-self: center;
         display:flex;
         flex-direction: column;
-        width:30%;
-        height:350px;
+        width:350px;
+        height:auto;
         margin : 10px 0;
         // object-fit:none;
         div {
@@ -144,17 +174,18 @@ form input {
                 font-weight: 400;
                 color: #901C1C;
                 margin :5px;
+                .bigger-font-weight{
+                    font-weight: 500;
+                }
             }
         }
 
-        img{
+        img, video{
             width:100%;
-            height:90%;
-            z-index:-1;
-            
-            object-fit: cover;
+            height:300px;
+            object-fit:cover;
             border-radius: 5px;
-            
         }
+        
     }
 }

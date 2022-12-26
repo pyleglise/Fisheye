@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e67e9e94e4.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -11,7 +12,7 @@
     <main id="main">
       <div class="photograph-header">
         <!-- <div class="photograph-identity"></div> -->
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="">Contactez-moi</button>
         <!-- <div class="photograph-picture"></div> -->
       </div>
     </main>
@@ -19,14 +20,20 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="../assets/icons/close.svg" onclick="closeModal()" />
+          <img class='close-btn' src="../assets/icons/close.svg" onclick="" />
         </header>
-				<form>
+				<form id="contactForm">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for='firstname'>Prénom</label>
+						<input type="text" name="firstname" id='firstname'/><span id="errorFirstName" class="error" aria-live="polite"></span>
+            <label for='lastname'>Nom</label>
+						<input type="text" name="lastname" id="lastname"/><span id="errorLastName" class="error" aria-live="polite"></span>
+            <label for="email">Email</label>
+						<input type="email" name="email" id="email"/><span id="errorEmail" class="error" aria-live="polite"></span>
+            <label for="message">Votre message</label>
+						<textarea type="text" name="message" id="message"></textarea> <span id="errorMessage" class="error" aria-live="polite"></span>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <input type="submit" name="submit-btn" class="contact_button" id="submit-btn" value="Envoyer">
 				</form>
 			</div>
 		</div>
