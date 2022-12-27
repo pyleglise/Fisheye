@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 /* Inject css */
+console.log('Démarrage')
 require('./css/style.scss')
 const header = require('./scripts/utils/header')
 const footer = require('./scripts/utils/footer')
@@ -11,7 +12,12 @@ const url = new URL(window.location.href)
 const _id = url.searchParams.get('id')
 const _mediaId = url.searchParams.get('mediaId')
 let calledPage = url.pathname.replace(/\//, '')
-if (calledPage === '') { calledPage = 'index.html' }
+
+if (!calledPage) {
+  calledPage = 'index.html'
+  window.history.pushState('', document.title, url + calledPage)
+}
+
 const scriptToLoad = calledPage.replace(/.html/, '')
 
 switch (scriptToLoad) {

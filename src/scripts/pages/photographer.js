@@ -85,48 +85,36 @@ module.exports = (_id, _mediaId) => {
       modal.after(mediaLbCardDOM)
 
       const mediasByPhotographerId = await bdd.getMediasByPhotographerId(_id)
-      // console.log(mediasByPhotographerId)
       const idx = mediasByPhotographerId.findIndex((e) => e.id === _mediaId)
-      // console.log(idx)
-      // console.log('mediasByPhotographerId.length:' + mediasByPhotographerId.length)
-      // if (idx > 0 && idx < mediasByPhotographerId.length - 1) {
-      //   const nextId = mediasByPhotographerId[idx + 1].id
-      //   console.log(nextId)
-      // }
+
       // catch the controls in the lightbox
       const lbLeftArrow = document.querySelector('.fa-angle-left')
       const lbRightArrow = document.querySelector('.fa-angle-right')
       const lbCloseBtn = document.querySelector('.fa-xmark')
-      // const lbCloseBtn = lightboxLinker.lbCloseBtn
-      if (idx > 0) {
-        lbLeftArrow.addEventListener('click', function () {
-        // console.log(url)
 
-          console.log('Previous image')
+      if (idx > 0) { // if first image, hide the left arrow
+        lbLeftArrow.addEventListener('click', function () {
           const url = new URL(window.location.href)
           url.searchParams.set('mediaId', mediasByPhotographerId[idx - 1].id)
           window.history.pushState('', document.title, url)
-          // console.log(url)
           const lightboxModal = document.getElementById('lightbox')
           lightboxModal.remove()
           displayLightbox(photographe, mediasByPhotographerId[idx - 1].id)
         })
       } else lbLeftArrow.style.visibility = 'hidden'
-      if (idx < mediasByPhotographerId.length - 1) {
+
+      if (idx < mediasByPhotographerId.length - 1) { // if last image, hide the right arrow
         lbRightArrow.addEventListener('click', function () {
-          console.log('Next image')
           const url = new URL(window.location.href)
-          // console.log(url)
           url.searchParams.set('mediaId', mediasByPhotographerId[idx + 1].id)
           window.history.pushState('', document.title, url)
-          // console.log(url)
           const lightboxModal = document.getElementById('lightbox')
           lightboxModal.remove()
           displayLightbox(photographe, mediasByPhotographerId[idx + 1].id)
         })
       } else lbRightArrow.style.visibility = 'hidden'
+
       lbCloseBtn.addEventListener('click', function () {
-        console.log('Close')
         const modal = modalLinker.modal
         domLinker.header.style.display = ''
         modal.style.display = ''
