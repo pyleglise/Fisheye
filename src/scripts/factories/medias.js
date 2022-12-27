@@ -11,7 +11,7 @@ module.exports = {
     const getMediasDOM = () => {
       const article = document.createElement('article')
       const aMedia = document.createElement('a')
-      aMedia.setAttribute('href', mediaFile)
+      aMedia.setAttribute('href', 'photographer.html?id=' + photographerId + '&mediaId=' + id)
       aMedia.setAttribute('title', "Cliquer pour agrandir l'image " + title)
       if (!isVideo) {
         const mediaElement = document.createElement('img')
@@ -24,6 +24,7 @@ module.exports = {
         videoSource.setAttribute('src', mediaFile)
         videoSource.setAttribute('type', 'video/mp4')
         videoSource.setAttribute('alt', title)
+        mediaElement.setAttribute('controls', '')
         mediaElement.appendChild(videoSource)
         aMedia.appendChild(mediaElement)
       }
