@@ -33,10 +33,12 @@ a:link, a:active{
     text-decoration: none;
 }
 a:hover, input:hover, button:hover, select:hover,
-a:focus, input:focus, button:focus, select:focus {
+a:focus, input:focus, button:focus, select:focus,
+.close-btn:focus, .close-btn:hover, .close-btn.activate {
   background-color: #d6d6d6;
-  outline-offset: 1em;
+  outline-offset: 0.5em;
   outline: 1px solid rgb(32, 11, 77);
+  border-radius : 5px;
 }
 
 .logo {

@@ -39,7 +39,19 @@ const bdd = module.exports = {
  */
   getMediasByPhotographerId: async (_id) => {
     const { data } = await bdd.getAllDatas()
+
     const mediasByPhotographerId = data.media.filter(element => element.photographerId === Number(_id))
+    // console.log(mediasByPhotographerId)
     return mediasByPhotographerId
+  },
+  /**
+ * Get media by id attached to a photographer id
+ * @returns Array of database objects
+ */
+  getMediasIdByPhotographerId: async (_id, _mediaId) => {
+    const data = await bdd.getMediasByPhotographerId(_id)
+    const mediasIdByPhotographerId = data.filter(element => element.id === Number(_mediaId))
+    // console.log(mediasIdByPhotographerId[0])
+    return mediasIdByPhotographerId[0]
   }
 }
