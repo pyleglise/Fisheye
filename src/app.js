@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 /* Inject css */
-console.log('Démarrage')
 require('./css/style.scss')
 const header = require('./scripts/utils/header')
 const footer = require('./scripts/utils/footer')

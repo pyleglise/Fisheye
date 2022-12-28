@@ -1,13 +1,14 @@
 // factoryMedias
 module.exports = {
   create (data) {
-    const { date, id, image, video, likes, photographFirstname, photographerId, price, title } = data
+    const { idx, date, id, image, video, likes, photographFirstname, photographerId, price, title } = data
     let isVideo = false
     let mediaFile = `/src/assets/medias/${photographFirstname}/${image}`
     if (video) {
       isVideo = true
       mediaFile = `/src/assets/medias/${photographFirstname}/${video}`
     }
+
     const getMediasDOM = () => {
       const article = document.createElement('article')
       const aMedia = document.createElement('a')
@@ -36,12 +37,17 @@ module.exports = {
       pTitle.textContent = title
       const pLikes = document.createElement('p')
       pLikes.classList.add('bigger-font-weight')
-      pLikes.innerHTML = likes + ' <i class="fa-solid fa-heart"></i>'
+      const spanLikes = document.createElement('span')
+      spanLikes.setAttribute('id', 'like_nb_' + idx)
+      spanLikes.textContent = likes
+      pLikes.appendChild(spanLikes)
+      pLikes.innerHTML += ' <i class="fa-solid fa-heart" id="like_' + idx + '"></i>'
       article.appendChild(divLegend)
       divLegend.appendChild(pTitle)
       divLegend.appendChild(pLikes)
+
       return (article)
     }
-    return { date, id, mediaFile, likes, photographFirstname, photographerId, price, title, getMediasDOM }
+    return { idx, date, id, mediaFile, likes, photographFirstname, photographerId, price, title, getMediasDOM }
   }
 }

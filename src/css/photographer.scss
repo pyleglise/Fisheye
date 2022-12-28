@@ -40,16 +40,26 @@
     }
     .sticky-note{
         position: fixed ;
-        
+        margin:0;
+        padding: 0;
         bottom: 0;
         right:50px;
         background-color: #DB8876;
-        font-size: 24px;
-        font-weight: 500;
-        font-style: normal;
-        line-height: 31px;
-        padding:13px 20px;
+        
+        
         border-radius: 5px 5px 0 0;
+        p{
+            margin:0;
+            font-size: 24px;
+            font-weight: 500;
+            font-style: normal;
+            line-height: 31px;
+            padding:20px;
+            
+        }
+        .fa-heart{
+            padding-right:90px;
+        }
     }
 }
 

@@ -1,17 +1,14 @@
 // factoryPhotographer
 module.exports = {
   create (data) {
-    const { id, name, city, country, tagline, price, portrait } = data
+    const { nbLikes, id, name, city, country, tagline, price, portrait } = data
     const picture = `/src/assets/photographers/${portrait}`
-    // console.log(data)
-    const getUserCardDOM = (page) => {
+    function getUserCardDOM (page) {
       const article = document.createElement('article')
       const aLink = document.createElement('a')
       aLink.href = 'photographer.html?id=' + id
       aLink.classList.add('photographer-link')
       aLink.setAttribute('aria-label', name)
-      // aLink.setAttribute('tabindex', index)
-      // aLink.setAttribute('onkeydown', 'return false;')
       const img = document.createElement('img')
       img.classList.add('picture-identity')
       img.setAttribute('src', picture)
@@ -52,15 +49,23 @@ module.exports = {
         const pLocalization = document.createElement('p')
         pLocalization.textContent = city + ', ' + country
         pLocalization.classList.add('p-localization')
-        const pPrice = document.createElement('div')
-        pPrice.classList.add('sticky-note')
-        pPrice.textContent = price + '€ / jour'
+        const divNote = document.createElement('div')
+        divNote.classList.add('sticky-note')
+        const pNote = document.createElement('p')
+        pNote.classList.add('p-note')
+        const spanNote = document.createElement('span')
+        spanNote.classList.add('span-note')
+        spanNote.textContent = nbLikes + ' '
+        pNote.appendChild(spanNote)
+        pNote.innerHTML += ' <i class="fa-solid fa-heart"></i> ' + price + '€ / jour'
+
+        divNote.appendChild(pNote)
         divIdentity.classList.add('div-identity')
         divIdentity.appendChild(h1)
         divIdentity.appendChild(pLocalization)
         divIdentity.appendChild(pTagline)
         divIdentity.append(img)
-        divIdentity.append(pPrice)
+        divIdentity.append(divNote)
         return (divIdentity)
       }
     }
