@@ -25,5 +25,13 @@ const modalLinker = {
   errorEmail: document.getElementById('errorEmail'),
   errorMessage: document.getElementById('errorMessage')
 }
+const lightboxLinker = {
+  lightbox: document.getElementById('lightbox'),
+  ulWrapper: document.querySelector('.media-wrapper'),
+  lbLeftArrow: document.querySelector('.fa-angle-left'),
+  lbRightArrow: document.querySelector('.fa-angle-right'),
+  lbCloseBtn: document.querySelector('.fa-xmark'),
+  lbMedia: document.querySelector('.media-wrapper')
+}
 
-module.exports = { modalLinker, domLinker }
+module.exports = { modalLinker, domLinker, lightboxLinker }

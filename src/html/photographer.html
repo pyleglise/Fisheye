@@ -17,10 +17,10 @@
       </div>
     </main>
     <div id="contact_modal" role=”dialog” aria-hidden="true">
-			<div class="modal">
+			<div class="modal" role="dialog">
 				<header>
           <h2>Contactez-moi</h2>
-          <img class='close-btn' src="../assets/icons/close.svg" onclick="" />
+          <img class='close-btn' src="../assets/icons/close.svg" aria-label='Cliquer pour fermer' tabindex="0" />
         </header>
 				<form id="contactForm">
 					<div>
@@ -37,6 +37,16 @@
 				</form>
 			</div>
 		</div>
+    <div id="lightbox">
+      <div class="lb-container" role="dialog" aria-label="Visualisation du portfolio">
+      <i class="fa-solid fa-angle-left" aria-label="Cliquer pour le précédent"></i>
+      <ul class="media-wrapper"></ul>
+      <div class="lb-right-col">
+        <i class="fa-solid fa-xmark" aria-label="Cliquer pour fermer"></i>
+        <i class="fa-solid fa-angle-right" aria-label="Cliquer pour le suivant"></i>
+      </div>
+    </div>
+    </div>
     <footer>
     </footer>
     <!-- <script src="../scripts/pages/photographer.js"></script> -->

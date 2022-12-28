@@ -6,7 +6,7 @@ module.exports = (_id, _mediaId) => {
   const factoryMedias = require('../factories/medias')
   const factoryLightbox = require('../factories/lightBox')
   const errMsg = require('../utils/errorMsg')
-  const { modalLinker, domLinker } = require('../utils/linker')
+  const { modalLinker, domLinker, lightboxLinker } = require('../utils/linker')
   const { regExName, regExEmail, regExMessage } = require('../utils/regExPatterns')
   const {
     displayModal, closeModal, checkTextField, errorDisplayHandler, checkFormValid,
@@ -72,58 +72,92 @@ module.exports = (_id, _mediaId) => {
    */
   const displayLightbox = async (photographe, _mediaId) => {
     if (_mediaId) {
-      const modal = modalLinker.modal
       domLinker.header.style.display = 'none'
-      modal.style.display = 'none'
+      modalLinker.modal.style.display = 'none'
       modalLinker.mainZone.style.display = 'none'
       domLinker.footer.style.display = 'none'
-      const mediasIdByPhotographerId = await bdd.getMediasIdByPhotographerId(_id, _mediaId)
-      const firstName = photographe.name.substring(photographe.name.lastIndexOf(' '), 0).replace('-', ' ')
-      mediasIdByPhotographerId.photographFirstname = firstName
-      const mediaLbModel = factoryLightbox.create(mediasIdByPhotographerId)
-      const mediaLbCardDOM = mediaLbModel.getLbMediaDOM()
-      modal.after(mediaLbCardDOM)
+      const mediasByPhotographerId = await bdd.getMediasByPhotographerId(photographe.id)
 
-      const mediasByPhotographerId = await bdd.getMediasByPhotographerId(_id)
-      const idx = mediasByPhotographerId.findIndex((e) => e.id === _mediaId)
-
-      // catch the controls in the lightbox
-      const lbLeftArrow = document.querySelector('.fa-angle-left')
-      const lbRightArrow = document.querySelector('.fa-angle-right')
-      const lbCloseBtn = document.querySelector('.fa-xmark')
-
-      if (idx > 0) { // if first image, hide the left arrow
-        lbLeftArrow.addEventListener('click', function () {
-          const url = new URL(window.location.href)
-          url.searchParams.set('mediaId', mediasByPhotographerId[idx - 1].id)
-          window.history.pushState('', document.title, url)
-          const lightboxModal = document.getElementById('lightbox')
-          lightboxModal.remove()
-          displayLightbox(photographe, mediasByPhotographerId[idx - 1].id)
-        })
-      } else lbLeftArrow.style.visibility = 'hidden'
-
-      if (idx < mediasByPhotographerId.length - 1) { // if last image, hide the right arrow
-        lbRightArrow.addEventListener('click', function () {
-          const url = new URL(window.location.href)
-          url.searchParams.set('mediaId', mediasByPhotographerId[idx + 1].id)
-          window.history.pushState('', document.title, url)
-          const lightboxModal = document.getElementById('lightbox')
-          lightboxModal.remove()
-          displayLightbox(photographe, mediasByPhotographerId[idx + 1].id)
-        })
-      } else lbRightArrow.style.visibility = 'hidden'
-
-      lbCloseBtn.addEventListener('click', function () {
-        const modal = modalLinker.modal
-        domLinker.header.style.display = ''
-        modal.style.display = ''
-        modalLinker.mainZone.style.display = ''
-        domLinker.footer.style.display = ''
-        const lightboxModal = document.getElementById('lightbox')
-        lightboxModal.remove()
+      mediasByPhotographerId.forEach((media, idx) => {
+        const firstName = photographe.name.substring(photographe.name.lastIndexOf(' '), 0).replace('-', ' ')
+        media.photographFirstname = firstName
+        media.idx = idx
+        const mediaLbModal = factoryLightbox.create(media)
+        const mediaLbCardDOM = mediaLbModal.getLbMediaDOM()
+        lightboxLinker.ulWrapper.appendChild(mediaLbCardDOM)
+        if (media.id === _mediaId) {
+          mediaLbCardDOM.style.display = 'block'
+        }
       })
+
+      lightboxLinker.lightbox.style.display = 'block'
+      let actualIdx = mediasByPhotographerId.findIndex((f) => f.id === _mediaId)
+
+      lightboxLinker.lbMedia.focus()
+
+      document.addEventListener('keyup', eEsc => {
+        if ((eEsc.key === 'Escape' || eEsc.key === 'Esc')) {
+          // console.log('Echappe')
+          closeLightbox()
+        }
+      })
+      lightboxLinker.lbCloseBtn.addEventListener('click', () => closeLightbox())
+      lightboxLinker.lbLeftArrow.addEventListener('click', () => { actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx - 1) })
+      lightboxLinker.lbRightArrow.addEventListener('click', () => { actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx + 1) })
+      document.addEventListener('keyup', eLeft => {
+        if (actualIdx > 0 && (eLeft.key === 'ArrowLeft' || eLeft.key === 'ArrowUp')) {
+          // console.log('Fleche back')
+          actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx - 1)
+        }
+      })
+      document.addEventListener('keyup', eRight => {
+        if ((actualIdx < mediasByPhotographerId.length - 1) && (eRight.key === 'ArrowRight' || eRight.key === 'ArrowDown')) {
+          // console.log('Fleche next')
+          actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx + 1)
+        }
+      })
+      if (actualIdx <= 0) { // if first image, hide the left arrow
+        lightboxLinker.lbLeftArrow.style.visibility = 'hidden'
+      }
+
+      if (actualIdx >= mediasByPhotographerId.length - 1) { // if last image, hide the right arrow
+        lightboxLinker.lbRightArrow.style.visibility = 'hidden'
+      }
     }
+  }
+
+  const changeMedia = (mediasByPhotographerId, actualIdx, nextIdx) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('mediaId', mediasByPhotographerId[nextIdx].id)
+    window.history.pushState('', document.title, url)
+    const actualMedia = document.getElementById(actualIdx)
+    const nextMedia = document.getElementById(nextIdx)
+    actualMedia.style.display = ''
+    nextMedia.style.display = 'block'
+
+    if (nextIdx <= 0) {
+      nextIdx = 0
+      lightboxLinker.lbLeftArrow.style.visibility = 'hidden'
+    } else lightboxLinker.lbLeftArrow.style.visibility = 'visible'
+    if (nextIdx >= mediasByPhotographerId.length - 1) {
+      nextIdx = mediasByPhotographerId.length - 1
+      lightboxLinker.lbRightArrow.style.visibility = 'hidden'
+    } else { lightboxLinker.lbRightArrow.style.visibility = 'visible' }
+    console.log('Nouvel index : ' + nextIdx)
+    return nextIdx
+  }
+
+  const closeLightbox = () => {
+    // console.log('Close Lightbox')
+    const url = new URL(window.location.href)
+    url.searchParams.delete('mediaId')
+    window.history.pushState('', document.title, url)
+    const modal = modalLinker.modal
+    domLinker.header.style.display = ''
+    modal.style.display = ''
+    modalLinker.mainZone.style.display = ''
+    domLinker.footer.style.display = ''
+    lightboxLinker.lightbox.style.display = 'none'
   }
 
   /**
