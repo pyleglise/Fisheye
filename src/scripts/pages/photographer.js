@@ -1,6 +1,16 @@
 // Photographer page handling
 module.exports = (_id, _mediaId) => {
   require('../../css/lightbox.scss')
+  const sortMenu = '<ul id="menu-vertical">' +
+    '<li>Trier par :' +
+        '<ul>' +
+          '<li id="sort-pop"><a href="#">Popularité</a></li>' +
+          '<li id="sort-date"><a href="#">Date</a></li>' +
+          '<li id="sort-title"><a href="#">Titre</a></li>' +
+        '</ul>' +
+      '</li>' +
+    '</ul>'
+
   const bdd = require('../modules/bdd')
   const factoryPhotographer = require('../factories/photographer')
   const factoryMedias = require('../factories/medias')
@@ -56,6 +66,16 @@ module.exports = (_id, _mediaId) => {
   const displayMedias = async (photographe) => {
     const mediasSection = document.createElement('section')
     mediasSection.classList.add('medias-section')
+    const sortCommand = document.createElement('nav')
+    sortCommand.classList.add('sort-command')
+
+    sortCommand.innerHTML = sortMenu
+
+    const aTitle = document.createElement('a')
+    aTitle.textContent = 'Title'
+
+    mediasSection.appendChild(sortCommand)
+
     const mediasByPhotographerId = await bdd.getMediasByPhotographerId(_id)
     let nbLikes = 0
     const eventLike = []
@@ -87,6 +107,60 @@ module.exports = (_id, _mediaId) => {
     })
 
     return nbLikes
+  }
+
+  const createSortMenu = () => {
+    const sortPop = document.getElementById('sort-pop')
+    const sortTitle = document.getElementById('sort-title')
+    const sortDate = document.getElementById('sort-date')
+    const menuItems = { sortPop, sortTitle, sortDate }
+    // console.log(menuItems)
+    sortPop.classList.add('checked')
+    sortTitle.style.display = 'none'
+    sortDate.style.display = 'none'
+    // console.log(sortPop)
+    sortPop.addEventListener('mouseenter', () => { displaySortMenu(menuItems) })
+    sortDate.addEventListener('mouseenter', () => { displaySortMenu(menuItems) })
+    sortTitle.addEventListener('mouseenter', () => { displaySortMenu(menuItems) })
+    sortPop.addEventListener('mouseout', () => { closeSortMenu(menuItems) })
+    sortDate.addEventListener('mouseout', () => { closeSortMenu(menuItems) })
+    sortTitle.addEventListener('mouseout', () => { closeSortMenu(menuItems) })
+    sortPop.addEventListener('click', () => { selectSortMenu(menuItems, sortPop) })
+    sortDate.addEventListener('click', () => { selectSortMenu(menuItems, sortDate) })
+    sortTitle.addEventListener('click', () => { selectSortMenu(menuItems, sortTitle) })
+  }
+  const selectSortMenu = (menuItems, selectItem) => {
+    // console.log('select ')
+    // console.log(selectItem.id)
+    menuItems.sortPop.classList.remove('checked')
+    menuItems.sortDate.classList.remove('checked')
+    menuItems.sortTitle.classList.remove('checked')
+    selectItem.classList.add('checked')
+    switch (selectItem.id) {
+      case 'sort-pop':
+        console.log('Tri par popularité')
+        break
+      case 'sort-date':
+        console.log('Tri par date')
+        break
+      case 'sort-title':
+        console.log('Tri par titre')
+        break
+      default:
+        break
+    }
+  }
+  const closeSortMenu = (menuItems) => {
+    // console.log('popout')
+    menuItems.sortTitle.style.display = 'none'
+    menuItems.sortDate.style.display = 'none'
+  }
+  const displaySortMenu = (menuItems) => {
+    // console.log('pop')
+    // console.log(menuItems.sortTitle)
+    menuItems.sortPop.style.display = 'flex'
+    menuItems.sortTitle.style.display = 'flex'
+    menuItems.sortDate.style.display = 'flex'
   }
 
   /**
@@ -214,6 +288,7 @@ module.exports = (_id, _mediaId) => {
     }
     await displayPhotographer(photographe)
     await displayTotalLikes(photographe)
+    createSortMenu()
 
     // catch and test inputs in the form
     modalLinker.formBtn.addEventListener('click', () => displayModal(photographe.name))

@@ -36,14 +36,23 @@ a:hover, input:hover, button:hover, select:hover,
 a:focus, input:focus, button:focus, select:focus,
 .close-btn:focus, .close-btn:hover, .close-btn.activate {
   background-color: #d6d6d6;
-  outline-offset: 0.5em;
-  outline: 1px solid rgb(32, 11, 77);
+  outline-offset: 0.2em;
+//   outline: 1px solid rgb(32, 11, 77);
   border-radius : 5px;
+  box-shadow: 5px 5px 10px #bebebe;
 }
-
+.logo-container{
+        display:block;
+        text-align: left;
+        margin-left:5em;
+        // width:fit-content;
+        height:max-content;
+    
+}
 .logo {
     height: 3.125em;
-    margin-left: 5em;
+    padding: 1em;
+    // margin-left:5em;
 }
 
 .photographer_section {
