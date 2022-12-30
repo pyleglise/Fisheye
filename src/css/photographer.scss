@@ -225,19 +225,35 @@ form textarea {
     list-style:none;
     width: 180px; /* seule ligne rajoutée */
     
+    
 }
   
 #menu-vertical li {
+    // flex : 1 1 auto;
+    // border-bottom: solid 1px white;
+    border: 1px 50px;
     position: relative;
     display:flex;
     justify-content: space-between;
     align-items: center;
+    :last-child{
+        border:none;
+    }
+    
     // background:#EFEFEF; /* juste pour cacher le texte de la page en-dessous */
-    .checked:after{
+    .checked-up:after{
 
-        font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00c";
+        font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f077"; // up : f077 ; down : f078
         // display: none;
     }
+    .checked-down:after{
+
+        font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f078"; // up : f077 ; down : f078
+        // display: none;
+    }
+
+    
+    
 }
 #menu-vertical a:visited {
     color:unset;
@@ -252,7 +268,8 @@ form textarea {
     //   outline: 1px solid rgb(32, 11, 77);
     border-radius : unset;
     box-shadow: unset;
-    padding:5px;
+    padding:10px 5px;
+    
 }
 #menu-vertical ul {
     position: absolute;
@@ -268,4 +285,5 @@ form textarea {
 #menu-vertical li:hover ul {
     left: 100px;
     top:-15px;
+    // border-bottom: 1px solid white
 } 

@@ -113,12 +113,13 @@ module.exports = (_id, _mediaId) => {
     const sortPop = document.getElementById('sort-pop')
     const sortTitle = document.getElementById('sort-title')
     const sortDate = document.getElementById('sort-date')
-    const menuItems = { sortPop, sortTitle, sortDate }
+    const menuItems = [sortPop, sortTitle, sortDate]
     // console.log(menuItems)
-    sortPop.classList.add('checked')
+    sortPop.classList.add('checked-up')
     sortTitle.style.display = 'none'
     sortDate.style.display = 'none'
     // console.log(sortPop)
+
     sortPop.addEventListener('mouseenter', () => { displaySortMenu(menuItems) })
     sortDate.addEventListener('mouseenter', () => { displaySortMenu(menuItems) })
     sortTitle.addEventListener('mouseenter', () => { displaySortMenu(menuItems) })
@@ -132,19 +133,39 @@ module.exports = (_id, _mediaId) => {
   const selectSortMenu = (menuItems, selectItem) => {
     // console.log('select ')
     // console.log(selectItem.id)
-    menuItems.sortPop.classList.remove('checked')
-    menuItems.sortDate.classList.remove('checked')
-    menuItems.sortTitle.classList.remove('checked')
-    selectItem.classList.add('checked')
+    let orderUp
+    if (selectItem.classList.contains('checked-up')) {
+      orderUp = false
+      menuItems.sortPop.classList.remove('checked-up')
+      menuItems.sortDate.classList.remove('checked-up')
+      menuItems.sortTitle.classList.remove('checked-up')
+      menuItems.sortPop.classList.remove('checked-down')
+      menuItems.sortDate.classList.remove('checked-down')
+      menuItems.sortTitle.classList.remove('checked-down')
+      selectItem.classList.add('checked-down')
+    } else {
+      orderUp = true
+      menuItems.sortPop.classList.remove('checked-up')
+      menuItems.sortDate.classList.remove('checked-up')
+      menuItems.sortTitle.classList.remove('checked-up')
+      menuItems.sortPop.classList.remove('checked-down')
+      menuItems.sortDate.classList.remove('checked-down')
+      menuItems.sortTitle.classList.remove('checked-down')
+      selectItem.classList.add('checked-up')
+    }
+
     switch (selectItem.id) {
       case 'sort-pop':
         console.log('Tri par popularité')
+        console.log('Order UP : ' + orderUp)
         break
       case 'sort-date':
         console.log('Tri par date')
+        console.log('Order UP : ' + orderUp)
         break
       case 'sort-title':
         console.log('Tri par titre')
+        console.log('Order UP : ' + orderUp)
         break
       default:
         break
