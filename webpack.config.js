@@ -22,9 +22,9 @@ const config = {
     main: path.resolve(__dirname, './src/app.js')
   },
   output: {
-    path: path.resolve(__dirname, 'docs'),
+    path: path.resolve(__dirname, 'docs/'),
     filename: '[name].bundle.js',
-    publicPath: '',
+    publicPath: '/',
     // assetModuleFilename: 'assets/[name][ext]',
     assetModuleFilename: (pathData) => {
       // console.log(pathData)
@@ -33,7 +33,7 @@ const config = {
         .split('/')
         .slice(1)
         .join('/')
-      return `src/${filepath}/[name][ext]`
+      return `./src/${filepath}/[name][ext]`
     },
     clean: true
 
@@ -64,10 +64,10 @@ const config = {
           loader: 'html-loader'
         }]
       },
-      {
-        test: /\.(js|jsx)$/,
-        use: 'babel-loader'
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   use: 'babel-loader'
+      // },
       // https://webpack.js.org/loaders/css-loader/
       {
         test: /\.s[ac]ss$/i,
