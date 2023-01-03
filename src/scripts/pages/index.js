@@ -1,6 +1,7 @@
 const { getPhotographers } = require('../modules/bdd')
 const factoryPhotographer = require('../factories/photographer')
-const page = new URL(document.location).pathname.replace(/\//, '')
+// get the page name
+const page = new URL(document.location).pathname.split('/').slice(-1)[0]
 
 const displayData = async photographers => {
   const photographersSection = document.querySelector('.photographer_section')

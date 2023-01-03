@@ -1,6 +1,6 @@
 // factoryMedias
 module.exports = {
-  create (data) {
+  create (data, sortCriteria, orderUp) {
     const { idx, date, id, image, video, likes, photographFirstname, photographerId, price, title } = data
     let isVideo = false
     let mediaFile = `/src/assets/medias/${photographFirstname}/${image}`
@@ -12,7 +12,7 @@ module.exports = {
     const getMediasDOM = () => {
       const article = document.createElement('article')
       const aMedia = document.createElement('a')
-      aMedia.setAttribute('href', 'photographer.html?id=' + photographerId + '&mediaId=' + id)
+      aMedia.setAttribute('href', 'photographer.html?id=' + photographerId + '&mediaId=' + id + '&sortCriteria=' + sortCriteria + '&orderUp=' + orderUp)
       aMedia.setAttribute('title', "Cliquer pour agrandir l'image " + title)
       if (!isVideo) {
         const mediaElement = document.createElement('img')

@@ -11,16 +11,25 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <!-- <div class="photograph-identity"></div> -->
         <button class="contact_button" onclick="">Contactez-moi</button>
-        <!-- <div class="photograph-picture"></div> -->
       </div>
+      <nav class="sort-command">
+        <ul id="menu-vertical">
+          <li class="sort-heading">Trier par :
+            <ul>
+              <li id="sort-pop"><a href="#">Popularité</a></li>
+              <li id="sort-date"><a href="#">Date</a></li>
+              <li id="sort-title"><a href="#">Titre</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
     </main>
     <div id="contact_modal" role=”dialog” aria-hidden="true">
 			<div class="modal" role="dialog">
 				<header>
           <h2>Contactez-moi</h2>
-          <img class='close-btn' src="../assets/icons/close.svg" aria-label='Cliquer pour fermer' tabindex="0" />
+          <img class='close-btn' src="../../src/assets/icons/close.svg" aria-label='Cliquer pour fermer' tabindex="0" />
         </header>
 				<form id="contactForm">
 					<div>
@@ -39,16 +48,15 @@
 		</div>
     <div id="lightbox">
       <div class="lb-container" role="dialog" aria-label="Visualisation du portfolio">
-      <i class="fa-solid fa-angle-left" aria-label="Cliquer pour le précédent"></i>
-      <ul class="media-wrapper"></ul>
-      <div class="lb-right-col">
-        <i class="fa-solid fa-xmark" aria-label="Cliquer pour fermer"></i>
-        <i class="fa-solid fa-angle-right" aria-label="Cliquer pour le suivant"></i>
+        <i class="fa-solid fa-angle-left" aria-label="Cliquer pour le précédent"></i>
+        <ul class="media-wrapper"></ul>
+        <div class="lb-right-col">
+          <i class="fa-solid fa-xmark" aria-label="Cliquer pour fermer"></i>
+          <i class="fa-solid fa-angle-right" aria-label="Cliquer pour le suivant"></i>
+        </div>
       </div>
-    </div>
     </div>
     <footer>
     </footer>
-    <!-- <script src="../scripts/pages/photographer.js"></script> -->
   </body>
 </html>
