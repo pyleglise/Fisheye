@@ -3,10 +3,10 @@ module.exports = {
   create (data, sortCriteria, orderUp) {
     const { idx, date, id, image, video, likes, photographFirstname, photographerId, price, title } = data
     let isVideo = false
-    let mediaFile = `/src/assets/medias/${photographFirstname}/${image}`
+    let mediaFile = `./src/assets/medias/${photographFirstname}/${image}`
     if (video) {
       isVideo = true
-      mediaFile = `/src/assets/medias/${photographFirstname}/${video}`
+      mediaFile = `./src/assets/medias/${photographFirstname}/${video}`
     }
 
     const getMediasDOM = () => {
