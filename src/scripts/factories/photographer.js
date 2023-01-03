@@ -2,6 +2,7 @@
 module.exports = {
   create (data) {
     const { nbLikes, id, name, city, country, tagline, price, portrait } = data
+    // console.log(`./src/assets/photographers/${portrait}`)
     const picture = `./src/assets/photographers/${portrait}`
     function getUserCardDOM (page) {
       const article = document.createElement('article')
