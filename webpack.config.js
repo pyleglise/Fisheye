@@ -24,7 +24,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, './docs'),
     filename: '[name].bundle.js',
-    publicPath: '',
+    publicPath: './',
     // assetModuleFilename: 'assets/[name][ext]',
     assetModuleFilename: (pathData) => {
       // console.log(pathData)
@@ -78,7 +78,7 @@ const config = {
         test: /\.(png|svg|jpg|jpeg|gif|otf|cur|mp4)$/i,
         type: 'asset/resource',
         generator: {
-          filename: '[path][name][ext]'
+          filename: './[path][name][ext]'
         }
       },
       {
