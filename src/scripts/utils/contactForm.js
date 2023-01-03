@@ -64,7 +64,7 @@ const errorDisplayHandler = (inputField, inputValid, errorfield, textMessage) =>
   inputField.className += ' valid'
   if (!inputValid) {
     errorfield.innerHTML = textMessage
-    errorfield.className = 'formData error active'
+    errorfield.className = 'error active'
     inputField.className += ' invalid'
     inputField.classList.remove('valid')
   }

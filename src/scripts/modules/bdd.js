@@ -9,7 +9,15 @@ const bdd = module.exports = {
  */
   getAllDatas: async () => {
     return axios
-      .get(bdd.bddFile, { mode: 'no-cors' })
+      .get(bdd.bddFile, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+          mode: 'cors'
+        }
+      })
       .then(res => res)
       .catch('Une erreur est survenue !')
   },

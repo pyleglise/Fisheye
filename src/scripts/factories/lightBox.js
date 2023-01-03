@@ -10,8 +10,8 @@ module.exports = {
     }
 
     const getLbMediaDOM = () => {
-      const ilMedia = document.createElement('il')
-      ilMedia.classList.add('il-media')
+      const ilMedia = document.createElement('li')
+      ilMedia.classList.add('li-media')
       ilMedia.setAttribute('id', idx)
       ilMedia.setAttribute('aria-label', title)
       if (!isVideo) {

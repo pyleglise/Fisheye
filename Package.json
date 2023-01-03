@@ -1,6 +1,6 @@
 {
   "name": "fisheye",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Developpeur d'application JS React Projet 6",
   "main": "./src/app.js",
   "scripts": {
@@ -48,5 +48,8 @@
     "globals": {
       "window": true
     }
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security"
   }
 }
