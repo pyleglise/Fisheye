@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 /* Inject css */
+
 require('./css/style.scss')
 require.context('./assets', true, /\.(png|svg|jpg|jpeg|gif|otf|cur|mp4)$/i)
 require.context('./data', true, /\.json$/i)

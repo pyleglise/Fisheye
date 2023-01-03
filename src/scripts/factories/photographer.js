@@ -1,8 +1,9 @@
+
 // factoryPhotographer
 module.exports = {
   create (data) {
     const { nbLikes, id, name, city, country, tagline, price, portrait } = data
-    const picture = `./src/assets/photographers/${portrait}`
+    const picture = `src/assets/photographers/${portrait}`
     function getUserCardDOM (page) {
       const article = document.createElement('article')
       const aLink = document.createElement('a')
