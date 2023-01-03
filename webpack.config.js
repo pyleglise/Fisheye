@@ -24,7 +24,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'docs/'),
     filename: '[name].bundle.js',
-    publicPath: '/',
+    publicPath: '',
     // assetModuleFilename: 'assets/[name][ext]',
     assetModuleFilename: (pathData) => {
       // console.log(pathData)
