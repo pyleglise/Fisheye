@@ -3,6 +3,7 @@ module.exports = {
   create (data) {
     const { idx, date, id, image, video, likes, photographFirstname, photographerId, price, title } = data
     let isVideo = false
+    // console.log(`./src/assets/medias/${photographFirstname}/${image}`)
     let mediaFile = `./src/assets/medias/${photographFirstname}/${image}`
     if (video) {
       isVideo = true
