@@ -43,7 +43,8 @@ Depuis à la racine du projet, tester les différentes pages de votre choix, par
 
 `npx eslint .\src\scripts\pages\photographer.js`
 
-## Mission
+
+# Mission
 
 Depuis quelques semaines, vous êtes développeur junior chez Techasite, une société de conseil spécialisée dans le développement de sites web et d'applications mobiles.
 
