@@ -32,7 +32,9 @@ En ligne de commande, installer eslinter avec npm :
 
 Depuis à la racine du projet, tester les différentes pages de votre choix, par exemple :
 `npx eslint .\src\app.js`
+
 `npx eslint .\src\scripts\pages\index.js`
+
 `npx eslint .\src\scripts\pages\photographer.js`
 
 ## Mission
