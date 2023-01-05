@@ -4,12 +4,15 @@
 ## Installer Webpack
 
 en ligne de commande, à la racine du projet taper:
+
 `npm install`
 
 ## Lancer le projet
 
 en ligne de commande, à la racine du projet taper:
+
 `npm run start`
+
 une fenêtre de votre navigateur par défaut devrait s'ouvrir, à chaque modification de votre code l'affichage se mettra à jour
 
 ## Tester l'accessibilité
@@ -17,6 +20,7 @@ une fenêtre de votre navigateur par défaut devrait s'ouvrir, à chaque modific
 ### Installer pa11y
 
 En ligne de commande, installer globalement avec npm:
+
 `npm install -g pa11y`
 
 ### Tester les pages
@@ -28,9 +32,11 @@ Au préalable le projet doit être en cours d'éxécution, puis en ligne de comm
 ## Tester le code javascript
 
 En ligne de commande, installer eslinter avec npm :
+
 `npm init @eslint/config`
 
 Depuis à la racine du projet, tester les différentes pages de votre choix, par exemple :
+
 `npx eslint .\src\app.js`
 
 `npx eslint .\src\scripts\pages\index.js`
