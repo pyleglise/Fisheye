@@ -1,6 +1,40 @@
 # Créez un site accessible pour une plateforme de photographes
 
- 
+## Installer Webpack
+
+en ligne de commande, à la racine du projet taper:
+`npm install`
+
+## Lancer le projet
+
+en ligne de commande, à la racine du projet taper:
+`npm run start`
+une fenêtre de votre navigateur par défaut devrait s'ouvrir, à chaque modification de votre code l'affichage se mettra à jour
+
+## Tester l'accessibilité
+
+### Installer pa11y
+
+En ligne de commande, installer globalement avec npm:
+`npm install -g pa11y`
+
+### Tester les pages
+
+Au préalable le projet doit être en cours d'éxécution, puis en ligne de commande lancer les commandes suivantes:
+- test de la page d'accueil: `pa11y http://localhost:8087/index.html` 
+- test de la page du premier photographe: `pa11y http://localhost:8087/photographer.html?id=243`
+
+## Tester le code javascript
+
+En ligne de commande, installer eslinter avec npm :
+`npm init @eslint/config`
+
+Depuis à la racine du projet, tester les différentes pages de votre choix, par exemple :
+`npx eslint .\src\app.js`
+`npx eslint .\src\scripts\pages\index.js`
+`npx eslint .\src\scripts\pages\photographer.js`
+
+
 
 Ce projet a récemment été mis à jour pour l’améliorer ! Si vous avez commencé le projet avant le 10/11/2021, vous pouvez décider de continuer sur l’ancienne version. Dans ce cas, vous pouvez préciser "version avant 10-11-21" sur vos livrables.
 

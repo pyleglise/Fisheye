@@ -22,7 +22,10 @@ module.exports = (_id, _mediaId, _sortCriteria, _orderUp) => {
   _mediaId = parseInt(_mediaId)
   // console.log(_orderUp)
   let orderUp
-  if (_orderUp !== undefined && _orderUp !== null) { orderUp = _orderUp.toLowerCase() === 'true' }// keep it boolean
+  if (_orderUp !== undefined && _orderUp !== null) {
+    orderUp = _orderUp.toLowerCase() === 'true'
+  } else orderUp = true // keep it boolean
+  console.log(orderUp)
   let sortCriteria = _sortCriteria
 
   /**
@@ -63,8 +66,9 @@ module.exports = (_id, _mediaId, _sortCriteria, _orderUp) => {
     if (mediaSection) mediaSection.remove()
     const mediasSection = document.createElement('section')
     mediasSection.classList.add('medias-section')
-    const aTitle = document.createElement('a')
-    aTitle.textContent = 'Title'
+    // const aTitle = document.createElement('a')
+    // aTitle.textContent = 'Title'
+
     if (orderUp === undefined) orderUp = true
     const mediasByPhotographerId = await bdd.getMediasByPhotographerId(_id)
     const byPop = (a, b) => a.likes - b.likes
@@ -116,7 +120,26 @@ module.exports = (_id, _mediaId, _sortCriteria, _orderUp) => {
         photographe.nbLikes = nbLikes
         await displayTotalLikes(photographe)
       })
+      eventLike[idx].parentElement.addEventListener('keyup', async (e) => {
+        if (e.key === 'Enter') {
+          if (media.likes === parseInt(nbLike[idx].textContent)) {
+            nbLike[idx].textContent = media.likes + 1
+            nbLikes++
+          } else {
+            nbLike[idx].textContent -= 1
+            nbLikes--
+          }
+        }
+        photographe.nbLikes = nbLikes
+        await displayTotalLikes(photographe)
+      })
     })
+    const firstImage = mediasSection.querySelector('a')
+    const sortPop = document.getElementById('sort-pop')
+    const sortTitle = document.getElementById('sort-title')
+    const sortDate = document.getElementById('sort-date')
+    const menuItems = [sortPop, sortTitle, sortDate]
+    firstImage.addEventListener('focus', () => { closeSortMenu(menuItems) })
 
     return nbLikes
   }
@@ -130,9 +153,12 @@ module.exports = (_id, _mediaId, _sortCriteria, _orderUp) => {
     const sortTitle = document.getElementById('sort-title')
     const sortDate = document.getElementById('sort-date')
     const menuItems = [sortPop, sortTitle, sortDate]
-
+    const contactBtn = document.querySelector('.contact_button')
+    contactBtn.addEventListener('focus', () => { closeSortMenu(menuItems) })
     menuItems.forEach(menuElement => {
+      const aSort = menuElement.querySelector('a')
       menuElement.addEventListener('mouseenter', () => { displaySortMenu(menuItems) })
+      aSort.addEventListener('focus', () => { displaySortMenu(menuItems) })
       menuElement.addEventListener('mouseover', () => { displaySortMenu(menuItems) })
       menuElement.addEventListener('mouseout', () => { closeSortMenu(menuItems) })
       menuElement.addEventListener('click', () => { selectSortMenu(photographe, menuItems, menuElement) })
@@ -277,9 +303,13 @@ module.exports = (_id, _mediaId, _sortCriteria, _orderUp) => {
   const displayLightbox = async (photographe, _mediaId) => {
     if (_mediaId) {
       domLinker.header.style.display = 'none'
+      domLinker.header.setAttribute('aria-hidden', 'true')
       modalLinker.modal.style.display = 'none'
+      modalLinker.modal.setAttribute('aria-hidden', 'true')
       modalLinker.mainZone.style.display = 'none'
+      modalLinker.mainZone.setAttribute('aria-hidden', 'true')
       domLinker.footer.style.display = 'none'
+      domLinker.footer.setAttribute('aria-hidden', 'true')
       const mediasByPhotographerId = await bdd.getMediasByPhotographerId(photographe.id)
       const byPop = (a, b) => a.likes - b.likes
       const byTitle = (a, b) => a.title.localeCompare(b.title)
@@ -317,16 +347,16 @@ module.exports = (_id, _mediaId, _sortCriteria, _orderUp) => {
       lightboxLinker.lightbox.style.display = 'block'
       let actualIdx = mediasByPhotographerId.findIndex((f) => f.id === _mediaId)
 
-      lightboxLinker.lbMedia.focus()
+      lightboxLinker.lightbox.focus()
 
       document.addEventListener('keyup', eEsc => {
         if ((eEsc.key === 'Escape' || eEsc.key === 'Esc')) {
           closeLightbox()
         }
       })
-      lightboxLinker.lbCloseBtn.addEventListener('click', () => closeLightbox())
-      lightboxLinker.lbLeftArrow.addEventListener('click', () => { actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx - 1) })
-      lightboxLinker.lbRightArrow.addEventListener('click', () => { actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx + 1) })
+      lightboxLinker.lbCloseBtn.parentElement.addEventListener('click', () => closeLightbox())
+      lightboxLinker.lbLeftArrow.parentElement.addEventListener('click', () => { actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx - 1) })
+      lightboxLinker.lbRightArrow.parentElement.addEventListener('click', () => { actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx + 1) })
       document.addEventListener('keyup', eLeft => {
         if (eLeft.key === 'ArrowLeft' || eLeft.key === 'ArrowUp') {
           actualIdx = changeMedia(mediasByPhotographerId, actualIdx, actualIdx - 1)

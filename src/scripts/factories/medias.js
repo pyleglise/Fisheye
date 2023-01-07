@@ -42,7 +42,7 @@ module.exports = {
       spanLikes.setAttribute('id', 'like_nb_' + idx)
       spanLikes.textContent = likes
       pLikes.appendChild(spanLikes)
-      pLikes.innerHTML += ' <i class="fa-solid fa-heart" id="like_' + idx + '"></i>'
+      pLikes.innerHTML += '<button title="Cliquer pour ajouter ou retirer un like à cette photo"><i class="fa-solid fa-heart" id="like_' + idx + '"></i></button>'
       article.appendChild(divLegend)
       divLegend.appendChild(pTitle)
       divLegend.appendChild(pLikes)

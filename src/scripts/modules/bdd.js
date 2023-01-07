@@ -2,25 +2,18 @@ const axios = require('axios')
 
 const bdd = module.exports = {
   bddFile: 'src/data/photographers.json',
-
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    mode: 'cors'
+  },
   /**
  * Get all photographers and all medias
  * @returns Array of database objects
  */
-  getAllDatas: async () => {
-    return axios
-      .get(bdd.bddFile, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-          mode: 'cors'
-        }
-      })
-      .then(res => res)
-      .catch('Une erreur est survenue !')
-  },
+  getAllDatas: async () => axios.get(bdd.bddFile, bdd.headers).then(res => res).catch('Une erreur est survenue !'),
 
   /**
  * Get one photographe with his id

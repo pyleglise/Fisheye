@@ -55,8 +55,10 @@
             padding:20px;
             
         }
+        
         .fa-heart{
             padding-right:90px;
+            
         }
     }
 }
@@ -206,7 +208,9 @@ form textarea {
             display: flex;
             justify-content: space-between;
 
-            p{
+            p, button{
+                background-color: inherit;
+                border:0;
                 font-size: 24px;
                 font-weight: 400;
                 color: #901C1C;
@@ -214,6 +218,11 @@ form textarea {
                 .bigger-font-weight{
                     font-weight: 500;
                 }
+                :hover, :focus, :active{
+                    cursor: pointer;
+                    box-shadow: none;
+                }
+                
             }
         }
 
