@@ -1,14 +1,18 @@
 # Créez un site accessible pour une plateforme de photographes
 
+
 ## Installer Webpack
 
 en ligne de commande, à la racine du projet taper:
+
 `npm install`
 
 ## Lancer le projet
 
 en ligne de commande, à la racine du projet taper:
+
 `npm run start`
+
 une fenêtre de votre navigateur par défaut devrait s'ouvrir, à chaque modification de votre code l'affichage se mettra à jour
 
 ## Tester l'accessibilité
@@ -16,6 +20,7 @@ une fenêtre de votre navigateur par défaut devrait s'ouvrir, à chaque modific
 ### Installer pa11y
 
 En ligne de commande, installer globalement avec npm:
+
 `npm install -g pa11y`
 
 ### Tester les pages
@@ -27,33 +32,21 @@ Au préalable le projet doit être en cours d'éxécution, puis en ligne de comm
 ## Tester le code javascript
 
 En ligne de commande, installer eslinter avec npm :
+
 `npm init @eslint/config`
 
 Depuis à la racine du projet, tester les différentes pages de votre choix, par exemple :
+
 `npx eslint .\src\app.js`
+
 `npx eslint .\src\scripts\pages\index.js`
+
 `npx eslint .\src\scripts\pages\photographer.js`
 
 
-
-Ce projet a récemment été mis à jour pour l’améliorer ! Si vous avez commencé le projet avant le 10/11/2021, vous pouvez décider de continuer sur l’ancienne version. Dans ce cas, vous pouvez préciser "version avant 10-11-21" sur vos livrables.
-
-De plus, les données JSON ont été mises à jour le 15 décembre 2021 pour ajouter des attributs "title" aux vidéo. Si vous avez commencé le projet avant cette date et ne voulez pas intégrer les nouveaux titres, vous pouvez.
-
-Le nommage des livrables à déposer sur la plateforme a été changé et des indications sur les temps de soutenance ont été ajoutées le 16/03/2022.
-
-Avant de démarrer votre travail sur ce projet, nous vous conseillons de:
-
-    lire le scénario en entier, chaque section du projet ainsi que les documents fournis ;
-
-    consulter le guide des étapes clés avec des recommandations et des ressources pour organiser votre travail ;
-
-    préparer une liste de questions pour votre première session de mentorat.
+# Mission
 
 Depuis quelques semaines, vous êtes développeur junior chez Techasite, une société de conseil spécialisée dans le développement de sites web et d'applications mobiles.
-
-Logo de FishEye
-Logo de FishEye
 
 Avec votre cheffe de projet Amanda et le Designer UI, vous venez de faire une réunion de lancement du projet avec un nouveau client, FishEye. FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. Ils ont récemment levé des fonds et aimeraient mettre à jour leur site web. 
 
@@ -86,7 +79,7 @@ Après la réunion de lancement, vous voyez un mail de votre cheffe de projet co
 
 Vous commencez par ouvrir les maquettes pour avoir une idée de ce qui doit être fait : 
 
-# Maquettes du site de FishEye
+## Maquettes du site de FishEye
 Page d'accueil des photographes avec 6 profils visibles de photographes. Pour chacun, plusieurs infos sont affichées (nom, localisation, courte description, tags, prix par jour). Des zones de la page sont délimitées par des rectangles numérotés afin de décrire des zones d'interaction.
 
 Lorsque vous commencez à regarder les maquettes, vous recevez un message instantané de Zoé, une développeuse senior que vous admirez beaucoup. Elle vous a encadré et a effectué un grand nombre de vos révisions de code :
@@ -102,46 +95,3 @@ Lorsque vous commencez à regarder les maquettes, vous recevez un message instan
 Bon, il semble bien que vous ayez maintenant tous les éléments dont vous avez besoin pour démarrer.  Il est temps de se mettre au travail !
 
 Pour vous aider à réaliser ce projet, voici un exemple de découpage des étapes à suivre. Vous y trouverez des conseils pour chaque étape, ainsi que sur l’utilisation des ressources pour ce projet.
-Livrables
-
-Pour ce projet, vous aurez besoin de créer les livrables suivants :
-
-    Un fichier au format TXT contenant le lien vers votre code sur GitHub avec les fichiers HTML, CSS et JavaScript. 
-
-Pour faciliter votre passage devant le jury, déposez sur la plateforme, dans un dossier zip nommé “Titre_du_projet_nom_prénom”, avec tous les livrables du projet comme suit : Nom_Prénom_n° du livrable_nom du livrable__date de démarrage du projet. Cela donnera :  
-
-    Nom_Prénom_1_code_mmaaaa.
-
-Par exemple, le premier livrable peut être nommé comme suit : Dupont_Jean_1_code_012022.
-Soutenance
-
-Lors de la présentation orale, votre évaluateur jouera le rôle d'Amanda, votre cheffe de projet. La présentation sera structurée comme suit : 
-
-    Présentation des livrables (15 minutes) 
-
-        Présenter le site web. 
-
-        Faire une démonstration de la navigation au clavier sur le site et avec lecteur d'écran.
-
-    Discussion (10 minutes) 
-
-        Jouant le rôle d'Amanda, l'évaluateur vous posera des questions sur votre méthodologie et vos livrables.
-
-        L'évaluateur remettra en question vos décisions, soyez donc prêt à défendre votre travail.
-
-    Debrief (5 minutes)
-
-        À la fin des sessions, l'évaluateur cessera de jouer le rôle d'Amanda afin que vous puissiez faire un débriefing ensemble. 
-
-Votre présentation devrait durer 15 minutes (+/- 5 minutes). Puisque le respect de la durée des présentations est important en milieu professionnel, les présentations en dessous de 10 minutes ou au-dessus de 20 minutes peuvent être refusées. 
-
- 
-## Compétences évaluées
-
-    Assurer l'accessibilité d'un site web
-
-    Gérer les évènements d'un site avec JavaScript
-
-    Développer une application web modulaire avec des design patterns
-
-    Ecrire du code JavaScript maintenable
