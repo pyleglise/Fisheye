@@ -10,3 +10,4 @@ module.exports = {
     pfooter.appendChild(spanFooter)
   }
 }
+ 
