@@ -31,40 +31,47 @@
   .lb-right-col{
     display:flex;
     flex-direction: column;
-    align-self:stretch;
-    align-content: stretch;
-    width: 94px;
+     width: 94px;
     // align-items: stretch;
     height: inherit;
+    button{
+      display: inline-flex;
+      align-items: flex-start;
+      height:50%;
+      :hover, :focus, :active{
+        cursor: pointer;
+        box-shadow: none;
+      }
+      
+    }
   }
-  .fa-angle-left{
-    text-align: center;
-    align-self: center;
-    height:100%;
-    width:94px;
-    // padding-right: 15px;
-    // padding-left: 15px;
+  button{
+    background-color: inherit;
+    border:0;
+    font-size: 24px;
+    font-weight: 400;
+    color:#901C1C;
+     
+    &:hover, &:focus, &:active{
+        cursor: pointer;
+        box-shadow: none;
+    }
+
+    &i.fa-angle-left{
+      text-align: center;
+      align-self: center;
+      height:100%;
+      width:94px;
+
+    }
+    &i.fa-angle-right{
+
+      margin-top:-0.5em;
+
+    }
+
   }
-  .fa-angle-right{
-    // display:inherit;
-    text-align:center;
-    align-self: center;
-    margin-top:-0.5em;
-    width:94px;
-    // padding-left: 15px;
-    // padding-right: 15px;
-    height:50%;
-  }
-  .fa-xmark{
-    // display:inherit;
-    height:50%;
-    width:94px;
-    text-align: center;
-    // margin-top:10px;
-    // padding-left: 15px;
-    // padding-right: 15px;
-    // align-self: flex-start;
-  }
+  
   .media-wrapper {
     width:auto;
     margin:0;
@@ -91,5 +98,7 @@
   }
   .li-media{
     display:none;
+    
   }
+  
 }

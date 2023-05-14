@@ -4,7 +4,6 @@
   "description": "Developpeur d'application JS React Projet 6",
   "main": "./src/app.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style expanded",
     "build": "cross-env NODE_ENV='production' webpack --config webpack.config.js --mode production",
     "start": "cross-env NODE_ENV='development' webpack-dev-server --progress --color --open --config webpack.config.js --mode development"
   },
@@ -38,6 +37,7 @@
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "node-sass": "^8.0.0",
+    "pa11y-reporter-html": "^2.0.0",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.72.1",
@@ -50,6 +50,8 @@
     }
   },
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "mkdirp": "^1.0.4",
+    "pa11y-ci-reporter-html": "^5.0.2"
   }
 }

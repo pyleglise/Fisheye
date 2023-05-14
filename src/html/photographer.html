@@ -25,22 +25,22 @@
         </ul>
       </nav>
     </main>
-    <div id="contact_modal" role=”dialog” aria-hidden="true">
+    <div id="contact_modal" role="dialog" aria-hidden="true">
 			<div class="modal" role="dialog">
 				<header>
           <h2>Contactez-moi</h2>
-          <img class='close-btn' src="../../src/assets/icons/close.svg" aria-label='Cliquer pour fermer' tabindex="0" />
+          <img class='close-btn' src="../../src/assets/icons/close.svg" alt="Bouton fermeture" aria-label='Cliquer pour fermer' tabindex="0">
         </header>
 				<form id="contactForm">
 					<div>
 						<label for='firstname'>Prénom</label>
-						<input type="text" name="firstname" id='firstname'/><span id="errorFirstName" class="error" aria-live="polite"></span>
+						<input type="text" name="firstname" id='firstname'><span id="errorFirstName" class="error" aria-live="polite"></span>
             <label for='lastname'>Nom</label>
-						<input type="text" name="lastname" id="lastname"/><span id="errorLastName" class="error" aria-live="polite"></span>
+						<input type="text" name="lastname" id="lastname"><span id="errorLastName" class="error" aria-live="polite"></span>
             <label for="email">Email</label>
-						<input type="email" name="email" id="email"/><span id="errorEmail" class="error" aria-live="polite"></span>
+						<input type="email" name="email" id="email"><span id="errorEmail" class="error" aria-live="polite"></span>
             <label for="message">Votre message</label>
-						<textarea type="text" name="message" id="message"></textarea> <span id="errorMessage" class="error" aria-live="polite"></span>
+						<textarea name="message" id="message"></textarea> <span id="errorMessage" class="error" aria-live="polite"></span>
 					</div>
           <input type="submit" name="submit-btn" class="contact_button" id="submit-btn" value="Envoyer">
 				</form>
@@ -48,11 +48,11 @@
 		</div>
     <div id="lightbox">
       <div class="lb-container" role="dialog" aria-label="Visualisation du portfolio">
-        <i class="fa-solid fa-angle-left" aria-label="Cliquer pour le précédent"></i>
+        <button  aria-label="Cliquer pour le précédent"><i class="fa-solid fa-angle-left" ></i></button>
         <ul class="media-wrapper"></ul>
         <div class="lb-right-col">
-          <i class="fa-solid fa-xmark" aria-label="Cliquer pour fermer"></i>
-          <i class="fa-solid fa-angle-right" aria-label="Cliquer pour le suivant"></i>
+          <button  aria-label="Cliquer pour fermer"><i class="fa-solid fa-xmark" ></i></button>
+          <button  aria-label="Cliquer pour le suivant"><i class="fa-solid fa-angle-right" ></i></button>
         </div>
       </div>
     </div>
